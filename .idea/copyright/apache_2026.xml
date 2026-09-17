@@ -1,0 +1,8 @@
+<component name="CopyrightManager">
+  <copyright>
+    <option name="allowReplaceRegexp" value="(?i)\bcopyright\b" />
+    <option name="keyword" value="(?i)\bcopyright\b" />
+    <option name="notice" value="Copyright 2026 JDHeim.com&#10;SPDX-License-Identifier: Apache-2.0" />
+    <option name="myName" value="apache-2026" />
+  </copyright>
+</component>

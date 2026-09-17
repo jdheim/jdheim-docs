@@ -1,0 +1,79 @@
+[project]
+site_name = "JDHeim"
+site_description = "Home for Java Developers"
+copyright = "Copyright 2024-<span id=\"copyright-year\"></span> JDHeim.com"
+repo_url = "https://github.com/jdheim"
+repo_name = "jdheim"
+docs_dir = "docs"
+site_dir = "site"
+nav = [
+  { "Home" = "index.md" },
+  { "JDVM" = "jdvm/index.md" },
+  { "ToolFetch" = "toolfetch/index.md" },
+]
+extra_javascript = [
+  "assets/javascripts/custom.js",
+]
+
+[project.extra]
+generator = true
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/jdheim"
+name = "JDHeim on GitHub"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/docker"
+link = "https://hub.docker.com/u/jdheim"
+name = "JDHeim on DockerHub"
+
+[project.theme]
+name = "material"
+variant = "modern"
+language = "en"
+logo = "assets/images/logo.png"
+favicon = "assets/images/favicon.png"
+features = [
+  "navigation.tabs",
+  "navigation.sections",
+  "navigation.top",
+  "search.highlight",
+  "search.suggest",
+  "content.code.copy",
+  "content.tooltips",
+]
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+
+[project.theme.palette.toggle]
+icon = "lucide/sun-moon"
+name = "Switch to light mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+
+[project.theme.palette.toggle]
+icon = "lucide/sun"
+name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+
+[project.theme.palette.toggle]
+icon = "lucide/moon"
+name = "Switch to system preference"
+
+[project.markdown_extensions]
+admonition = {}
+attr_list = {}
+md_in_html = {}
+pymdownx.details = {}
+pymdownx.emoji.emoji_generator = "zensical.extensions.emoji.to_svg"
+pymdownx.emoji.emoji_index = "zensical.extensions.emoji.twemoji"
+pymdownx.superfences = {}
+pymdownx.tabbed.alternate_style = true
+toc.permalink = true

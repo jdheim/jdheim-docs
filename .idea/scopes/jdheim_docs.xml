@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="jdheim-docs" pattern="file:*/&amp;&amp;!file:site//*&amp;&amp;!file:.cache//*&amp;&amp;!file:.uv-cache//*&amp;&amp;!file:.venv//*" />
+</component>

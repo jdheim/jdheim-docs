@@ -1,0 +1,13 @@
+# INTELLIJ IDEA
+.idea/*
+!.idea/copyright
+!.idea/scopes
+*.iml
+
+# PYTHON
+.venv/
+.uv-cache/
+
+# ZENSICAL
+.cache/
+site/
