@@ -34,15 +34,20 @@ Given the following configuration file named `toolfetch.yaml`:
 destination: "/opt"
 tools:
   - id: "toolfetch"
-    url: "https://github.com/jdheim/toolfetch/releases/download/v0.0.6/toolfetch-0.0.6-linux-amd64.tar.gz"
+    url: "https://github.com/jdheim/toolfetch/releases/download/v0.0.7/toolfetch-0.0.7-linux-amd64.tar.gz"
 ```
 
-When you invoke the command: `toolfetch --config "toolfetch.yaml"`, the latest version of the tool will be installed like this:
+When you invoke the command: `toolfetch install`, the latest version of the tool will be installed like this:
 
 ```shell
 /opt
 |-- toolfetch
 ```
+
+!!! note
+
+    The configuration file is autodetected as `toolfetch.yaml` or `toolfetch.yml` in the current directory.
+    You can customize the configuration path with `-c` or `--config`, for example: `toolfetch install --config "path/to/config.yaml"`.
 
 ---
 
@@ -52,10 +57,10 @@ You can use optional placeholder: `${version}` in `url` which will be replaced w
 destination: "/opt"
 tools:
   - id: "toolfetch"
-    version: "0.0.6"
+    version: "0.0.7"
     url: "https://github.com/jdheim/toolfetch/releases/download/v${version}/toolfetch-${version}-linux-amd64.tar.gz"
   - id: "intellij-idea"
-    version: "2026.2.2"
+    version: "2026.2.3"
     url: "https://download.jetbrains.com/idea/idea-${version}.tar.gz"
 ```
 
@@ -75,11 +80,11 @@ You can optionally define a `destination` key for a specific tool to install it 
 destination: "/opt"
 tools:
   - id: "toolfetch"
-    version: "0.0.6"
+    version: "0.0.7"
     url: "https://github.com/jdheim/toolfetch/releases/download/v${version}/toolfetch-${version}-linux-amd64.tar.gz"
     destination: "best-tools" # or absolute path: "/opt/best-tools"
   - id: "intellij-idea"
-    version: "2026.2.2"
+    version: "2026.2.3"
     url: "https://download.jetbrains.com/idea/idea-${version}.tar.gz"
 ```
 
@@ -102,15 +107,15 @@ You can optionally define a `checksums` key for a specific tool to verify the do
 destination: "/opt"
 tools:
   - id: "toolfetch"
-    version: "0.0.6"
+    version: "0.0.7"
     url: "https://github.com/jdheim/toolfetch/releases/download/v${version}/toolfetch-${version}-linux-amd64.tar.gz"
     checksums:
-      sha256: "5a246140b879e434dd8abaf3d9c0c5379d428011867680bb6d5f5760593403f6"
+      sha256: "b505e3f905c9440f7719bf7b97e8e42f1d2dadc864223add1a759885c2935281"
   - id: "intellij-idea"
-    version: "2026.2.2"
+    version: "2026.2.3"
     url: "https://download.jetbrains.com/idea/idea-${version}.tar.gz"
     checksums:
-      sha256: "f1cc5329a7adf3ab3bd8886744103f7d3bcf1ca12e699762ecd9bffe57335f8b"
+      sha256: "68751c8ae4d49407251cd197df795fbed91b6fdc85d10c73c4649a99e496ab37"
 ```
 
 Currently, the following Checksum Verification Formats are supported:
@@ -137,11 +142,11 @@ Example:
 destination: "$HOME/tools"
 tools:
   - id: "toolfetch"
-    version: "0.0.6"
+    version: "0.0.7"
     url: "https://github.com/jdheim/toolfetch/releases/download/v${version}/toolfetch-${version}-linux-amd64.tar.gz"
     destination: "${DEV_HOME}/best-tools"
   - id: "intellij-idea"
-    version: "2026.2.2"
+    version: "2026.2.3"
     url: "https://download.jetbrains.com/idea/idea-${version}.tar.gz"
 ```
 
@@ -158,7 +163,7 @@ http:
   requestTimeout: 300 # HTTP request timeout in seconds. Default: 900 seconds (15 minutes)
 tools:
   - id: "toolfetch"
-    version: "0.0.6"
+    version: "0.0.7"
     url: "https://github.com/jdheim/toolfetch/releases/download/v${version}/toolfetch-${version}-linux-amd64.tar.gz"
 ```
 
@@ -172,11 +177,11 @@ http:
       path: "/path/to/truststore" # Location of the TrustStore file containing trusted CA certificates.
                                   # Default: lib/security/cacerts or jre/lib/security/cacerts under JavaHome, which ToolFetch resolves from the first valid java executable on $PATH;
                                   # otherwise the bundled default TrustStore
-	  type: "PKCS12"              # TrustStore type. Default: autodetected. Set the type if autodetection fails
+      type: "PKCS12"              # TrustStore type. Default: autodetected. Set the type if autodetection fails
       # If the TrustStore is password-protected, specify the password using the TOOLFETCH_HTTP_SSL_TRUSTSTORE_PASSWORD environment variable
 tools:
   - id: "toolfetch"
-    version: "0.0.6"
+    version: "0.0.7"
     url: "https://github.com/jdheim/toolfetch/releases/download/v${version}/toolfetch-${version}-linux-amd64.tar.gz"
 ```
 
@@ -227,3 +232,13 @@ and Compression Formats:
 - `z`
 - `zstandard`
 - concatenated streams for `bzip2`, `gzip`, `xz` and `lz4`
+
+## Troubleshooting
+
+ToolFetch stores log messages, including `DEBUG` messages, and exception stack traces in `.toolfetch/toolfetch.log` under the user's home directory.
+
+The log file is overwritten on each run. Console output includes messages at `INFO` level and above. `DEBUG` level messages are available in the log
+file for troubleshooting.
+
+If you encounter an issue with ToolFetch, report it in [GitHub Issues](https://github.com/jdheim/toolfetch/issues). Describe the issue in detail,
+include `toolfetch.log` and steps to reproduce it.
