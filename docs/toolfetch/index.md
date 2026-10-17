@@ -18,9 +18,42 @@ Installation demo using [toolfetch.yaml](https://github.com/jdheim/toolfetch/blo
 
 ## Installation
 
-1. Download the latest release for your OS/architecture from [Releases](https://github.com/jdheim/toolfetch/releases)
-2. Move the `toolfetch` binary to a directory in your `$PATH` (e.g., system-wide: `/usr/local/bin` or user-specific:
-   `$HOME/.local/bin`)
+1. Download the latest release for your OS/architecture from [Releases](https://github.com/jdheim/toolfetch/releases).
+2. Extract the archive into your chosen installation directory.
+3. On Linux, open a terminal in the installation directory and make the binary executable:
+
+     ```shell
+     chmod +x bin/toolfetch
+     ```
+
+4. Create a symlink in a directory on your `$PATH`. Replace `/path/to/installation/bin/toolfetch` with the absolute path to the extracted binary.
+   Choose one of the following:
+
+     For your user:
+     ```shell
+     mkdir -p "$HOME/.local/bin"
+     ln -s /path/to/installation/bin/toolfetch "$HOME/.local/bin/toolfetch"
+     ```
+   
+     If `$HOME/.local/bin` is not already on your `$PATH`, add this line to your shell startup file (e.g., `~/.bashrc` or `~/.zshrc`), then open a new
+     terminal:
+     ```shell
+     export PATH="$HOME/.local/bin:$PATH"
+     ```
+
+     Or, system-wide:
+     ```shell
+     sudo mkdir -p /usr/local/bin
+     sudo ln -s /path/to/installation/bin/toolfetch /usr/local/bin/toolfetch
+     ```
+
+5. Verify the installation:
+
+      ```shell
+      toolfetch --help
+      ```
+
+Keep the extracted binary in place so the symlink continues to work.
 
 ## Verify Releases
 
